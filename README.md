@@ -307,7 +307,7 @@ ISC License - see LICENSE file for details
 
 ## 👨‍💻 Author
 
-**Naveen Mishra**
+**Naveen Mishra, Chitransh Srivastava, Krishna Sharma**
 
 ## 🙏 Acknowledgments
 
@@ -318,7 +318,7 @@ ISC License - see LICENSE file for details
 
 ## 📞 Support
 
-For support, email naveenmis2004@gmail.com or open an issue in the repository.
+For support, email naveenmis2004@gmail.com / chitranshsri2126@gmail.com or open an issue in the repository.
 
 ---
 
