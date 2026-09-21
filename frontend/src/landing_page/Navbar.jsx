@@ -8,7 +8,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const token = sessionStorage.getItem("token");
-    setIsLoggedIn(!!token); // true if token exists
+    setIsLoggedIn(!!token);
   }, []);
 
   const handleLogout = () => {
@@ -20,20 +20,29 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-lg sticky-top">
+      <div className="container">
+        {/* Brand Logo & Title */}
         <a className="navbar-brand d-flex align-items-center fw-bold" href="/">
-          <img
-            src={logo}
-            alt="Logo"
-            width="35"
-            height="35"
-            className="d-inline-block align-text-top me-2"
-          />
-          Timetable Generator
+          <div
+            className="d-flex align-items-center justify-content-center rounded me-2"
+            style={{
+              width: 32,
+              height: 32,
+              background: "rgba(33, 215, 137, 0.15)",
+              border: "1px solid rgba(33, 215, 137, 0.4)",
+              color: "var(--jb-green)",
+              fontSize: "1rem"
+            }}
+          >
+            ⚡
+          </div>
+          <span style={{ letterSpacing: "-0.4px" }}>
+            Smart<span style={{ color: "var(--jb-green)" }}>Timetable</span>
+          </span>
         </a>
 
-        {/* Toggler for mobile view */}
+        {/* Mobile Toggle */}
         <button
           className="navbar-toggler"
           type="button"
@@ -42,40 +51,42 @@ const Navbar = () => {
           aria-controls="navbarNavDropdown"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          style={{ borderColor: "var(--jb-border)" }}
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon" style={{ filter: "invert(1)" }}></span>
         </button>
 
-        {/* Navbar Links */}
+        {/* Nav Links */}
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto align-items-lg-center gap-1">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
+              <a className="nav-link" href="/">
                 Home
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" href="/services">
-                Services
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link active" href="/support">
-                Support
+              <a className="nav-link" href="/#learn">
+                Architecture
               </a>
             </li>
 
-            {/* Login or Logout */}
             {!isLoggedIn ? (
-              <li className="nav-item">
-                <a className="nav-link active" href="/login">
-                  Login
-                </a>
-              </li>
+              <>
+                <li className="nav-item ms-lg-2">
+                  <a className="nav-link" href="/login">
+                    Sign In
+                  </a>
+                </li>
+                <li className="nav-item ms-lg-1">
+                  <a className="btn btn-primary btn-sm px-3" href="/signup">
+                    Get Started Free
+                  </a>
+                </li>
+              </>
             ) : (
-              <li className="nav-item p-1">
+              <li className="nav-item ms-lg-2">
                 <button
-                  className="btn btn-outline-light btn-sm"
+                  className="btn btn-outline-primary btn-sm px-3"
                   onClick={handleLogout}
                 >
                   Logout

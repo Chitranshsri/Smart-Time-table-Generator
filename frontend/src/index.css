@@ -1,41 +1,286 @@
+/* ==========================================================================
+   Smart Timetable Generator — JetBrains / PyCharm Design System
+   Aesthetic: Clear, Decent, Professional Dark IDE Canvas with PyCharm Green & Amber
+   ========================================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --jb-bg: #19191c;
+  --jb-surface: #212124;
+  --jb-surface-elevated: #27282c;
+  --jb-surface-hover: #2f3036;
+  --jb-input: #1e1e22;
+
+  --jb-border: rgba(255, 255, 255, 0.1);
+  --jb-border-hover: rgba(255, 255, 255, 0.2);
+  --jb-border-focus: #21d789;
+
+  --jb-text: #f0f0f2;
+  --jb-text-secondary: #9da0a8;
+  --jb-text-muted: #6f737a;
+
+  /* JetBrains PyCharm Accents */
+  --jb-green: #21d789;
+  --jb-green-hover: #1cc279;
+  --jb-orange: #fc801d;
+  --jb-yellow: #f8c555;
+  --jb-cyan: #35b3ee;
+  --jb-purple: #a56df6;
+
+  --jb-radius-sm: 6px;
+  --jb-radius-md: 10px;
+  --jb-radius-lg: 14px;
+
+  --jb-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --jb-font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --jb-font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Global Reset & Base */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  background-color: var(--jb-bg) !important;
+  color: var(--jb-text) !important;
+  font-family: var(--jb-font-main) !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+a {
+  color: var(--jb-green);
+  text-decoration: none;
+  transition: color 0.15s ease;
 }
 
-.nav-link{
-  margin-left: 40px;
+a:hover {
+  color: var(--jb-green-hover);
 }
 
-#supportHero{
-  background-color: rgb(56, 126, 209);
-  color: white;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--jb-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--jb-surface-elevated);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--jb-text-muted);
 }
 
-#supportHero a{
-  color: white;
+/* ==========================================================================
+   Navbar Overrides (JetBrains Top Bar)
+   ========================================================================== */
+.navbar, .bg-primary {
+  background-color: var(--jb-surface) !important;
+  border-bottom: 1px solid var(--jb-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
 }
 
-#supportWrapper{
+.navbar-brand {
+  color: var(--jb-text) !important;
+  font-weight: 700 !important;
+  font-size: 1.15rem;
+  letter-spacing: -0.3px;
   display: flex;
-  justify-content: space-between;
-  margin: 0 150px;
+  align-items: center;
+  gap: 10px;
 }
 
-#supportHero input{
-  padding: 20px 50px;
-  width: 100%;
-  font-size: 20px;
-  border-radius: 10px;
-  border: none;
+.navbar-brand img {
+  filter: drop-shadow(0 2px 6px rgba(33, 215, 137, 0.4));
+}
+
+.nav-link {
+  color: var(--jb-text-secondary) !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 8px 14px !important;
+  border-radius: var(--jb-radius-sm);
+  transition: all 0.15s ease;
+  margin-left: 8px !important;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--jb-text) !important;
+  background-color: var(--jb-surface-hover);
+}
+
+/* ==========================================================================
+   JetBrains Buttons
+   ========================================================================== */
+.btn-primary {
+  background-color: var(--jb-green) !important;
+  color: #121214 !important;
+  border: none !important;
+  font-weight: 600 !important;
+  font-size: 0.92rem;
+  padding: 10px 22px !important;
+  border-radius: var(--jb-radius-sm) !important;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  box-shadow: 0 4px 14px rgba(33, 215, 137, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--jb-green-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(33, 215, 137, 0.35);
+}
+
+.btn-outline-primary {
+  background-color: transparent !important;
+  color: var(--jb-text) !important;
+  border: 1px solid var(--jb-border) !important;
+  font-weight: 600 !important;
+  font-size: 0.92rem;
+  padding: 10px 22px !important;
+  border-radius: var(--jb-radius-sm) !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--jb-surface-elevated) !important;
+  border-color: var(--jb-border-hover) !important;
+  color: #ffffff !important;
+}
+
+.btn-danger {
+  background-color: #f43f5e !important;
+  border: none !important;
+  border-radius: var(--jb-radius-sm) !important;
+}
+
+.btn-success {
+  background-color: var(--jb-green) !important;
+  color: #121214 !important;
+  border: none !important;
+  border-radius: var(--jb-radius-sm) !important;
+}
+
+/* ==========================================================================
+   JetBrains Cards & Surfaces
+   ========================================================================== */
+.card, .shadow {
+  background-color: var(--jb-surface) !important;
+  border: 1px solid var(--jb-border) !important;
+  border-radius: var(--jb-radius-md) !important;
+  color: var(--jb-text) !important;
+  box-shadow: var(--jb-shadow) !important;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--jb-border-hover) !important;
+}
+
+.card-header {
+  background-color: var(--jb-surface-elevated) !important;
+  border-bottom: 1px solid var(--jb-border) !important;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Forms & Inputs (PyCharm Editor Style)
+   ========================================================================== */
+.form-control, .form-select {
+  background-color: var(--jb-input) !important;
+  border: 1px solid var(--jb-border) !important;
+  color: var(--jb-text) !important;
+  border-radius: var(--jb-radius-sm) !important;
+  padding: 10px 14px !important;
+  font-size: 0.92rem !important;
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: var(--jb-surface-elevated) !important;
+  border-color: var(--jb-green) !important;
+  box-shadow: 0 0 0 2px rgba(33, 215, 137, 0.25) !important;
+  color: #ffffff !important;
+}
+
+.form-label {
+  color: var(--jb-text-secondary);
+  font-weight: 500;
+  font-size: 0.88rem;
+  margin-bottom: 6px;
+}
+
+/* ==========================================================================
+   Tables (IDE Schedule Matrix)
+   ========================================================================== */
+.table {
+  color: var(--jb-text) !important;
+  border-color: var(--jb-border) !important;
+  margin-bottom: 0 !important;
+}
+
+.table > :not(caption) > * > * {
+  background-color: transparent !important;
+  border-bottom-color: var(--jb-border) !important;
+  padding: 12px 16px !important;
+  vertical-align: middle;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.table-hover > tbody > tr:hover > * {
+  background-color: var(--jb-surface-hover) !important;
+}
+
+thead th {
+  background-color: var(--jb-surface-elevated) !important;
+  color: var(--jb-text-secondary) !important;
+  font-weight: 700 !important;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--jb-border) !important;
+}
+
+/* ==========================================================================
+   JetBrains Badges & Chips
+   ========================================================================== */
+.jb-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(33, 215, 137, 0.12);
+  border: 1px solid rgba(33, 215, 137, 0.3);
+  color: var(--jb-green);
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.badge {
+  font-weight: 600 !important;
+  border-radius: 4px !important;
+  padding: 5px 8px !important;
+}
+
+/* ==========================================================================
+   Footer Styling
+   ========================================================================== */
+footer {
+  background-color: var(--jb-surface) !important;
+  border-top: 1px solid var(--jb-border) !important;
+  color: var(--jb-text-secondary) !important;
+}
+
+footer h5, footer h6 {
+  color: var(--jb-text) !important;
+  font-weight: 700;
 }
