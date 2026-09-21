@@ -27,11 +27,23 @@ app.use("/api/leaves", require("./routes/leaveRoutes"));
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-// Serve frontend
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+// Root Health Check Route
+app.get("/", (req, res) => {
+  res.json({
+    status: "online",
+    message: "Smart Timetable Generator Backend REST API is running live!",
+    database: "MongoDB Atlas Connected",
+    author: "Chitransh Srivastava"
+  });
+});
 
+// Serve frontend only if dist exists
+const fs = require("fs");
+const distPath = path.join(__dirname, "../frontend/dist");
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
   app.use((req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+    res.sendFile(path.join(distPath, "index.html"));
   });
 }
+
